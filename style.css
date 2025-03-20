@@ -25,7 +25,6 @@ body {
     font-size: 1.2rem;
     background-color: var(--skyBluecolor);
     .search {
-      /* border: 1px solid; */
       padding: 5px;
       border-radius: 10px;
       background-color: whitesmoke;
@@ -126,6 +125,117 @@ body {
     }
   }
 }
+
+/* USER.HTML PART */
+.logo {
+  /* SET IMAGE LATER */
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: var(--skyBluecolor);
+  height: 40px;
+  .right {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    span {
+      padding: 5px;
+    }
+  }
+  .user-burger {
+    display: none;
+    font-size: 1.3rem;
+    padding: 5px;
+    cursor: pointer;
+  }
+}
+.user-menu-cont {
+  background-color: var(--greenColor);
+  width: max-content;
+  padding: 10px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  position: fixed;
+  top: 33px;
+  right: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: none;
+  a {
+    padding: 5px 10px;
+  }
+  span {
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    padding: 5px 20px;
+  }
+  span:hover {
+    background-color: rgba(0, 0, 0, 0.402);
+  }
+}
+/* FORM CONTAINER */
+.form-cont {
+  height: 80svh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .form {
+    font-size: 1.3rem;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: 300px;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        font-size: 1.3rem;
+        font-family: "Times New Roman", Times, serif;
+        border-radius: 10px;
+        font-weight: 600;
+        background-color: black;
+        color: whitesmoke;
+        padding: 5px;
+      }
+    }
+  }
+  .btn01,
+  .btn02 {
+    cursor: pointer;
+    b:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .login-form {
+  }
+  .sigin-form {
+    display: none;
+  }
+}
+
 /* media part */
 @media screen and (max-width: 768px) {
   .header-cont {
@@ -145,6 +255,15 @@ body {
     }
     .header-02 {
       display: none;
+    }
+  }
+  /* USER FORM CONTAINER RESPONSIVEMESS---------- */
+  .user-header {
+    .right {
+      display: none;
+    }
+    .user-burger {
+      display: flex;
     }
   }
 }

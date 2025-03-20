@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User's acc</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="user-header">
+      <div class="logo">LOGO</div>
+      <div class="right">
+        <a href="/index.html"><span>Home</span></a>
+        <a href=""
+          ><span
+            ><i class="fa-solid fa-id-card-clip fa-bounce"></i> Admission</span
+          ></a
+        >
+        <a href=""
+          ><span><i class="fa fa-phone fa-shake"></i> Contacts</span></a
+        >
+        <a href=""><span>Help</span></a>
+      </div>
+      <div class="user-burger" onclick="show()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+    <div class="user-menu-cont">
+      <a href=""
+        ><span
+          ><i class="fa-solid fa-id-card-clip fa-bounce"></i> Admission</span
+        ></a
+      >
+      <a href=""
+        ><span><i class="fa fa-phone fa-shake"></i> Contacts</span></a
+      >
+      <a href=""><span>Help</span></a>
+    </div>
+    <main>
+      <div class="form-cont">
+        <div class="login-form form">
+          <form action="">
+            <label for="v-mail">E-mail</label>
+            <input
+              type="email"
+              name="e-mail"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
+              title="Please enter a valid email (e.g., user@example.com)"
+              required /><br />
+            <label for="v-pass">Password</label>
+            <input type="password" name="padd" required />
+            <br />
+            <button class="login-btn" type="submit">Login..</button>
+            <p>forgot Password?</p>
+            <br />
+
+            <p class="btn01">Create new <b>sign up!</b></p>
+          </form>
+        </div>
+        <div class="sigin-form form">
+          <button class="btn02">back to log in</button>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script>
+      // burger menu view BURGER 001
+      const burger = document.querySelector(".user-burger");
+      let view = "true";
+      const menu = document.querySelector(".user-menu-cont");
+      burger.addEventListener("click", () => {
+        if (view === "true") {
+          menu.style.display = "flex";
+          burger.innerHTML = `<i class="fas fa-times"></i>`;
+          view = "false";
+        } else {
+          menu.style.display = "none";
+          burger.innerHTML = `<i class="fas
+    fa-bars"></i>`;
+          view = "true";
+        }
+      });
+      // WHEN CLICK ON MENU OR SELECT MENU FROM BAR ITS GET CLOSE
+      document
+        .querySelector(".user-menu-cont")
+        .addEventListener("click", () => {
+          if (view === "false") {
+            menu.style.display = "none";
+            burger.innerHTML = `<i class="fas fa-bars"></i>`;
+            view = "true";
+          }
+        });
+
+      document.querySelector("main").addEventListener("click", () => {
+        if (view === "false") {
+          menu.style.display = "none";
+          burger.innerHTML = `<i class="fas fa-bars"></i>`;
+          view = "true";
+        }
+      });
+      // LOGIN SIGIN BUTTON PART
+      const btn01 = document.querySelector(".btn01");
+      const sign = document.querySelector(".sigin-form");
+      const btn02 = document.querySelector(".btn02");
+      const log = document.querySelector(".login-form");
+      btn01.addEventListener("click", () => {
+        sign.style.display = "flex";
+        log.style.display = "none";
+        event.preventDefault();
+      });
+      btn02.addEventListener("click", () => {
+        log.style.display = "flex";
+        sign.style.display = "none";
+        event.preventDefault();
+      });
+      // log in part----------------------------------still working in it---------------------------------------------------------------------------------------------
+      // login authorization part
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent page reload
+
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const message = document.getElementById("message");
+
+          // Sample credentials (Replace with database check in a real app)
+          const validUser = "admin";
+          const validPass = "12345";
+
+          if (username === validUser && password === validPass) {
+            message.style.color = "green";
+            message.textContent = "Login successful! Redirecting...";
+
+            // Store login status (Optional)
+            localStorage.setItem("loggedIn", "true");
+
+            // Redirect after 2 seconds (Change URL to your dashboard)
+            setTimeout(() => {
+              window.location.href = "dashboard.html";
+            }, 2000);
+          } else {
+            message.style.color = "red";
+            message.textContent = "Invalid username or password!";
+          }
+        });
+      // ------------------------------------remember me part-----------------------------------------------------
+      document.addEventListener("DOMContentLoaded", function () {
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const rememberMeCheckbox = document.getElementById("rememberMe");
+
+        // Check if user details are stored
+        if (localStorage.getItem("rememberedEmail")) {
+          emailInput.value = localStorage.getItem("rememberedEmail");
+          passwordInput.value = localStorage.getItem("rememberedPassword");
+          rememberMeCheckbox.checked = true; // Keep checkbox checked
+        }
+
+        document
+          .getElementById("loginForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent page refresh
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (rememberMeCheckbox.checked) {
+              // Save credentials in localStorage
+              localStorage.setItem("rememberedEmail", email);
+              localStorage.setItem("rememberedPassword", password);
+            } else {
+              // Remove saved credentials if "Remember Me" is unchecked
+              localStorage.removeItem("rememberedEmail");
+              localStorage.removeItem("rememberedPassword");
+            }
+
+            alert("Login successful! (Simulated)");
+            // Redirect to dashboard or perform authentication here
+          });
+      });
+    </script>
+  </body>
+</html>
