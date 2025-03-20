@@ -57,14 +57,44 @@
             <input type="password" name="padd" required />
             <br />
             <button class="login-btn" type="submit">Login..</button>
-            <p>forgot Password?</p>
+            <a href="" style="font-size: 1rem; color: darkred"
+              >forgot Password?</a
+            >
             <br />
 
             <p class="btn01">Create new <b>sign up!</b></p>
           </form>
         </div>
         <div class="sigin-form form">
-          <button class="btn02">back to log in</button>
+          <form action="">
+            <p style="align-self: flex-end" class="btn02">
+              Back to <b>login!</b>
+            </p>
+            <br />
+            <label for="f-name">First Name</label>
+            <input type="text" required /><br />
+            <label for="s-name">Second Name</label>
+            <input type="text" /><br />
+            <label for="n-mail">E-mail</label>
+            <input
+              type="email"
+              id="e-mail"
+              name="e-mail"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$"
+              title="Please enter a valid email (e.g., user@example.com)"
+              required /><br />
+            <label for="n-pass">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              pattern="(?=.*[A-Z])(?=.*[@$!%*?&])(?=.*[0-9]).{8,}"
+              title="Must contain:&#10;- At least one uppercase letter&#10;- One special character (@$!%*?&)&#10;- One number&#10;- Minimum 8 characters"
+              required />
+            <br />
+            <button class="login-btn" type="submit">Create A/c..</button>
+            <br />
+          </form>
         </div>
       </div>
     </main>
@@ -113,11 +143,13 @@
         sign.style.display = "flex";
         log.style.display = "none";
         event.preventDefault();
+        sign.classList.add("show");
       });
       btn02.addEventListener("click", () => {
         log.style.display = "flex";
         sign.style.display = "none";
         event.preventDefault();
+        log.classList.add("show");
       });
       // log in part----------------------------------still working in it---------------------------------------------------------------------------------------------
       // login authorization part
